@@ -21,6 +21,7 @@ public class Celestials {
     public static void register() {
         system = new SolarSystem("infiniteSystem", "milkyWay");
         Star star = new Star("infiniteStar");
+        star.setParentSolarSystem(system);
         star.setBodyIcon(icon("star"));
         system.setMainStar(star);
         system.setMapPosition(new Vector3(-1.5F, 1.2F, 0.0F));
