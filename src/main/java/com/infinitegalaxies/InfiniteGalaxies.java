@@ -33,6 +33,7 @@ public class InfiniteGalaxies {
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
+        com.infinitegalaxies.space.Celestials.register();
         LOG.info("Infinite Galaxies carregado junto com o Galacticraft!");
     }
 }
