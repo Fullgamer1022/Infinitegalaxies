@@ -1,13 +1,24 @@
-
 name: Build and test
 
 on:
-  pull_request:
-    branches: [ master, main ]
   push:
     branches: [ master, main ]
+  workflow_dispatch:
 
 jobs:
-  build-and-test:
-    uses: GTNewHorizons/GTNH-Actions-Workflows/.github/workflows/build-and-test.yml@master
-    secrets: inherit
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version-file: .java-version
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Build
+        run: ./gradlew build -x spotlessCheck -x spotlessJavaCheck --console=plain
+      - name: Salvar o jar
+        uses: actions/upload-artifact@v4
+        with:
+          name: infinitegalaxies-jar
+          path: build/libs/*.jar
