@@ -22,8 +22,8 @@ public final class Regions {
 
     public static int[] cellOf(String name) {
         long h = PlanetTraits.seedOf(key(name));
-        int cx = (int) Math.floorMod(h, 1000L) - 500;
-        int cz = (int) Math.floorMod(h >>> 20, 1000L) - 500;
+        int cx = (int) Math.floorMod(h, 400L) - 200;
+        int cz = (int) Math.floorMod(h >>> 20, 400L) - 200;
         return new int[] { cx, cz };
     }
 

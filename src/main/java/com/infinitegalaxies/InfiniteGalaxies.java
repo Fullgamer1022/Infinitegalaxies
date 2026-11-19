@@ -68,6 +68,7 @@ public class InfiniteGalaxies {
         NET.registerMessage(PacketTravel.Handler.class, PacketTravel.class, 0, Side.SERVER);
 
         MinecraftForge.EVENT_BUS.register(new GravityHandler());
+        cpw.mods.fml.common.FMLCommonHandler.instance().bus().register(new com.infinitegalaxies.space.Rescue());
     }
 
     @Mod.EventHandler
