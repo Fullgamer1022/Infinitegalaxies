@@ -15,11 +15,15 @@ import net.minecraft.world.chunk.IChunkProvider;
 public class PlanetChunkProvider implements IChunkProvider {
 
     private final World world;
-    private final PlanetTraits t;
+    protected PlanetTraits t;
 
     public PlanetChunkProvider(World world, PlanetTraits t) {
         this.world = world;
         this.t = t;
+    }
+
+    protected PlanetTraits traitsFor(int cx, int cz) {
+        return t;
     }
 
     private double hash(int x, int z, int o) {
@@ -65,6 +69,7 @@ public class PlanetChunkProvider implements IChunkProvider {
 
     @Override
     public Chunk provideChunk(int cx, int cz) {
+        this.t = traitsFor(cx, cz);
         Block[] blocks = new Block[65536];
         for (int x = 0; x < 16; x++) {
             for (int z = 0; z < 16; z++) {

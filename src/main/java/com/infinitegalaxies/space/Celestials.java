@@ -11,7 +11,6 @@ import micdoodle8.mods.galacticraft.api.galaxies.Planet;
 import micdoodle8.mods.galacticraft.api.galaxies.SolarSystem;
 import micdoodle8.mods.galacticraft.api.galaxies.Star;
 import micdoodle8.mods.galacticraft.api.vector.Vector3;
-import micdoodle8.mods.galacticraft.core.dimension.TeleportTypeMoon;
 
 public class Celestials {
 
@@ -36,7 +35,7 @@ public class Celestials {
         system.setMapPosition(new Vector3(-1.5F, 1.2F, 0.0F));
         GalaxyRegistry.registerSolarSystem(system);
 
-        GalacticraftRegistry.registerTeleportType(NovaTerraProvider.class, new TeleportTypeMoon());
+        GalacticraftRegistry.registerTeleportType(NovaTerraProvider.class, new InfiniteTeleportType());
 
         novaTerra = new Planet("novaTerra");
         novaTerra.setParentSolarSystem(system);

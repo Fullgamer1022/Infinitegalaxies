@@ -1,8 +1,10 @@
 package com.infinitegalaxies.net;
 
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.util.ChatComponentText;
 
-import com.infinitegalaxies.planet.TravelService;
+import com.infinitegalaxies.space.Destinations;
+import com.infinitegalaxies.space.Regions;
 
 import cpw.mods.fml.common.network.ByteBufUtils;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
@@ -35,7 +37,15 @@ public class PacketTravel implements IMessage {
         @Override
         public IMessage onMessage(PacketTravel msg, MessageContext ctx) {
             EntityPlayerMP p = ctx.getServerHandler().playerEntity;
-            TravelService.enqueue(p, msg.name);
+            String n = msg.name == null ? "" : msg.name.trim();
+            if (n.isEmpty()) return null;
+            if (n.length() > 40) n = n.substring(0, 40);
+            Destinations.set(p, n);
+            int[] c = Regions.cellOf(n);
+            p.addChatMessage(
+                new ChatComponentText(
+                    "Destino definido: " + Regions.describe(n, Regions.traitsOfCell(c[0], c[1]))
+                        + ". Lance o foguete e escolha o Destino Infinito no mapa."));
             return null;
         }
     }

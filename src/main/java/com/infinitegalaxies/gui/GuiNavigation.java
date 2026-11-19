@@ -26,8 +26,7 @@ public class GuiNavigation extends GuiScreen {
         field = new GuiTextField(this.fontRendererObj, cx - 100, cy - 10, 200, 20);
         field.setMaxStringLength(40);
         field.setFocused(true);
-        this.buttonList.add(new GuiButton(0, cx - 100, cy + 20, 98, 20, "Viajar"));
-        this.buttonList.add(new GuiButton(1, cx + 2, cy + 20, 98, 20, "Voltar a Terra"));
+        this.buttonList.add(new GuiButton(0, cx - 100, cy + 20, 200, 20, "Definir destino"));
     }
 
     @Override
@@ -76,7 +75,7 @@ public class GuiNavigation extends GuiScreen {
         drawCenteredString(this.fontRendererObj, "Console Estelar", this.width / 2, this.height / 2 - 60, 0xB388FF);
         drawCenteredString(
             this.fontRendererObj,
-            "Escreva o nome de um mundo, gal\u00e1xia ou universo",
+            "Escreva o destino do foguete (qualquer nome)",
             this.width / 2,
             this.height / 2 - 38,
             0xCCCCCC);

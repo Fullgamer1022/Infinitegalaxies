@@ -1,5 +1,6 @@
 package com.infinitegalaxies.space;
 
+import com.infinitegalaxies.InfiniteGalaxies;
 import com.infinitegalaxies.planet.PlanetTraits;
 
 import micdoodle8.mods.galacticraft.api.galaxies.CelestialBody;
@@ -9,7 +10,7 @@ import micdoodle8.mods.galacticraft.api.vector.Vector3;
 public class NovaTerraProvider extends WorldProviderSpace {
 
     private PlanetTraits t() {
-        return Celestials.NOVA_TRAITS;
+        return InfiniteGalaxies.proxy.viewerTraits();
     }
 
     @Override
@@ -49,7 +50,7 @@ public class NovaTerraProvider extends WorldProviderSpace {
 
     @Override
     public float getGravity() {
-        return 0.08F * t().gravity;
+        return 0.08F;
     }
 
     @Override
@@ -69,7 +70,7 @@ public class NovaTerraProvider extends WorldProviderSpace {
 
     @Override
     public float getFallDamageModifier() {
-        return t().gravity;
+        return 1.0F;
     }
 
     @Override
