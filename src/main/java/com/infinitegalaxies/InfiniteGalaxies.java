@@ -30,7 +30,7 @@ import cpw.mods.fml.relauncher.Side;
     name = "Infinite Galaxies",
     version = "0.0.1",
     acceptedMinecraftVersions = "[1.7.10]",
-    dependencies = "required-after:GalacticraftCore")
+    dependencies = "required-after:GalacticraftCore;after:hbm;after:NuclearCraft;after:IC2")
 public class InfiniteGalaxies {
 
     public static final String MODID = "infinitegalaxies";
@@ -68,6 +68,7 @@ public class InfiniteGalaxies {
         NET.registerMessage(PacketTravel.Handler.class, PacketTravel.class, 0, Side.SERVER);
 
         MinecraftForge.EVENT_BUS.register(new GravityHandler());
+        cpw.mods.fml.common.FMLCommonHandler.instance().bus().register(new com.infinitegalaxies.space.Radiation());
         cpw.mods.fml.common.FMLCommonHandler.instance().bus().register(new com.infinitegalaxies.space.Rescue());
     }
 
